@@ -1,5 +1,3 @@
-import lizGenerator_pb2
-import lizGenerator_pb2_grpc
 import grpc
 import tensorflow as tf
 import numpy as np
@@ -7,9 +5,12 @@ import io
 from concurrent import futures
 import random
 
+import proto_pb2
+import proto_pb2_grpc
 
-class ServiceServicer(lizGenerator_pb2_grpc.ServiceServicer):
-    def Phrase (self, request, context) :
+
+class ServiceServicer(proto_pb2_grpc.ServiceServicer):
+    def phrase (self, request, context) :
         f = io.open("trainText.txt", mode="r", encoding="utf-8")
         text = f.read()
         chars = sorted(list(set(text)))
@@ -42,13 +43,13 @@ class ServiceServicer(lizGenerator_pb2_grpc.ServiceServicer):
             padded_seed = np.append(padded_seed[0][1:], index)
             padded_seed = tf.keras.preprocessing.sequence.pad_sequences([padded_seed], maxlen=50, padding='post')
 
-        res = lizGenerator_pb2.Response()
+        res = proto_pb2.Response()
         res.phrase = generated_text
         print(res)
         return res
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-    lizGenerator_pb2_grpc.add_ServiceServicer_to_server(ServiceServicer(),server)
+    proto_pb2_grpc.add_ServiceServicer_to_server(ServiceServicer(),server)
     server.add_insecure_port("localhost:50051")
     server.start()
     server.wait_for_termination()

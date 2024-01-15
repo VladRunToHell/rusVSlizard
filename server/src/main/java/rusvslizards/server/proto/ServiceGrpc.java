@@ -19,7 +19,7 @@ public final class ServiceGrpc {
       russvslizards.server.Response> getPhraseMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "Phrase",
+      fullMethodName = SERVICE_NAME + '/' + "phrase",
       requestType = russvslizards.server.Request.class,
       responseType = russvslizards.server.Response.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
@@ -32,13 +32,13 @@ public final class ServiceGrpc {
           ServiceGrpc.getPhraseMethod = getPhraseMethod =
               io.grpc.MethodDescriptor.<russvslizards.server.Request, russvslizards.server.Response>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Phrase"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "phrase"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   russvslizards.server.Request.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   russvslizards.server.Response.getDefaultInstance()))
-              .setSchemaDescriptor(new ServiceMethodDescriptorSupplier("Phrase"))
+              .setSchemaDescriptor(new ServiceMethodDescriptorSupplier("phrase"))
               .build();
         }
       }

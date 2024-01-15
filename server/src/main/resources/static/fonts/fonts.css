@@ -1,0 +1,19 @@
+@font-face {
+	font-family: "Rubik Wet Paint";
+	src: url('./RubickWetPaint/RubikWetPaint-Regular.woff2') format('woff2'), 
+	url('./RubickWetPaint/RubikWetPaint-Regular.woff') format('woff'), 
+	url('./RubickWetPaint/RubikWetPaint-Regular.eot') format('eot'),
+	url('./RubickWetPaint/RubikWetPaint-Regular.ttf') format('ttf');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Hirmos Caps ieUcs";
+	src: url('./Hirmon/HirmosCapsieUcs.woff2') format('woff2'), 
+	url('./Hirmon/HirmosCapsieUcs.woff') format('woff'), 
+	url('./Hirmon/HirmosCapsieUcs.eot') format('eot'), 
+	url('./Hirmon/HirmosCapsieUcs.ttf') format('ttf');
+	font-weight: 400;
+	font-style: normal;
+}

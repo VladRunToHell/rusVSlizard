@@ -4,7 +4,7 @@ option java_multiple_files = true;
 
 
 service Service {
-  rpc Phrase(Request) returns (Response);
+  rpc phrase(Request) returns (Response);
 }
 
 message Request {}
@@ -12,13 +12,3 @@ message Request {}
 message Response {
   string phrase = 1;
 }
-
-service Choise {
-  rpc Vibor(RequestV) returns (ResponseV);
-}
-
-message RequestV {
-  int64 vibor = 1;
-}
-
-message ResponseV {}

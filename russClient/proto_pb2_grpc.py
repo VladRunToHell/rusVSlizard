@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-import lizGenerator_pb2 as lizGenerator__pb2
+import proto_pb2 as proto__pb2
 
 
 class ServiceStub(object):
@@ -14,17 +14,17 @@ class ServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.Phrase = channel.unary_unary(
-                '/liz.Service/Phrase',
-                request_serializer=lizGenerator__pb2.Request.SerializeToString,
-                response_deserializer=lizGenerator__pb2.Response.FromString,
+        self.phrase = channel.unary_unary(
+                '/russvslizards.server.Service/phrase',
+                request_serializer=proto__pb2.Request.SerializeToString,
+                response_deserializer=proto__pb2.Response.FromString,
                 )
 
 
 class ServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
-    def Phrase(self, request, context):
+    def phrase(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -33,14 +33,14 @@ class ServiceServicer(object):
 
 def add_ServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'Phrase': grpc.unary_unary_rpc_method_handler(
-                    servicer.Phrase,
-                    request_deserializer=lizGenerator__pb2.Request.FromString,
-                    response_serializer=lizGenerator__pb2.Response.SerializeToString,
+            'phrase': grpc.unary_unary_rpc_method_handler(
+                    servicer.phrase,
+                    request_deserializer=proto__pb2.Request.FromString,
+                    response_serializer=proto__pb2.Response.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'liz.Service', rpc_method_handlers)
+            'russvslizards.server.Service', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
@@ -49,7 +49,7 @@ class Service(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
-    def Phrase(request,
+    def phrase(request,
             target,
             options=(),
             channel_credentials=None,
@@ -59,8 +59,8 @@ class Service(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/liz.Service/Phrase',
-            lizGenerator__pb2.Request.SerializeToString,
-            lizGenerator__pb2.Response.FromString,
+        return grpc.experimental.unary_unary(request, target, '/russvslizards.server.Service/phrase',
+            proto__pb2.Request.SerializeToString,
+            proto__pb2.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

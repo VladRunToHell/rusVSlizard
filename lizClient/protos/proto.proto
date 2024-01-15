@@ -1,7 +1,7 @@
 syntax = "proto3";
 package liz;
 service Service {
-    rpc Phrase(Request) returns (Response);
+    rpc phrase(Request) returns (Response);
 }
 
 message Request {

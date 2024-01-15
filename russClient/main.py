@@ -15,11 +15,11 @@ import io
 from concurrent import futures
 import random
 
-import ProtoFile_pb2
-import ProtoFile_pb2_grpc
+import proto_pb2
+import proto_pb2_grpc
 
-class ServiceServicer(ProtoFile_pb2_grpc.ServiceServicer):
-    def Phrase(self, request, context):
+class ServiceServicer(proto_pb2_grpc.ServiceServicer):
+    def phrase(self, request, context):
         filename = "rus.txt"
         raw_text = open(filename, 'r', encoding='utf-8').read()
         raw_text = raw_text.lower()
@@ -80,14 +80,14 @@ class ServiceServicer(ProtoFile_pb2_grpc.ServiceServicer):
             pattern = pattern[1:len(pattern)]
         print("Printing results:")
         print(res)
-        responsetext = ProtoFile_pb2.Response()
+        responsetext = proto_pb2.Response()
         responsetext.phrase = res
         return(responsetext)
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-    ProtoFile_pb2_grpc.add_ServiceServicer_to_server(ServiceServicer(), server)
-    server.add_insecure_port("localhost:50052")
+    proto_pb2_grpc.add_ServiceServicer_to_server(ServiceServicer(), server)
+    server.add_insecure_port("localhost:9090")
     server.start()
     server.wait_for_termination()
 
