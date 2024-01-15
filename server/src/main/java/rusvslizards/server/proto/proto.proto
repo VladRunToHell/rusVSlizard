@@ -12,3 +12,13 @@ message Request {}
 message Response {
   string phrase = 1;
 }
+
+service Choise {
+  rpc Vibor(RequestV) returns (ResponseV);
+}
+
+message RequestV {
+  int64 vibor = 1;
+}
+
+message ResponseV {}

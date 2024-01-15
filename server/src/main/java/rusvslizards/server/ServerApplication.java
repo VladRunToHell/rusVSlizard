@@ -1,5 +1,6 @@
 package rusvslizards.server;
 
+import arduino.Arduino;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import javax.annotation.PostConstruct;
 import java.io.IOException;
+import java.util.Scanner;
 
 @SpringBootApplication
 public class ServerApplication {

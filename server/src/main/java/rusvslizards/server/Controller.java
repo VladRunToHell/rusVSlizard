@@ -15,6 +15,8 @@ public class Controller {
 
     ServiceLizards serviceLizards;
 
+<<<<<<< HEAD
+=======
     @RequestMapping(value="/tester")
     public String test() {
         System.out.println("Hi!");
@@ -24,8 +26,10 @@ public class Controller {
     @RequestMapping(value="/")
     public String index() { return "index"; };
     
+>>>>>>> 2e54d0e3a7d7c514c08d6fd49d27ea0f0c772905
     @RequestMapping(value = "/RequestToRuss", method = RequestMethod.GET)
     public ResponseEntity<String> RequestToRuss() throws IOException, InterruptedException {
+        System.out.println("here");
         Server server = ServerBuilder.forPort(9094).
                 addService(serviceRuss)
                 .build();
@@ -38,6 +42,7 @@ public class Controller {
 
     @RequestMapping(value = "/RequestToLizards", method = RequestMethod.GET)
     public ResponseEntity<String> RequestToLizards() throws IOException, InterruptedException {
+        System.out.println("jeblan");
         Server server = ServerBuilder.forPort(9095).
                 addService(serviceLizards)
                 .build();
