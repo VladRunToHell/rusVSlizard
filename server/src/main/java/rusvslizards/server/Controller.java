@@ -15,6 +15,11 @@ public class Controller {
 
     ServiceLizards serviceLizards;
 
+    @RequestMapping(value="test", method = RequestMethod.GET)
+    public void test() {
+        System.out.println("Hi!");
+    }
+    
     @RequestMapping(value = "/RequestToRuss", method = RequestMethod.GET)
     public ResponseEntity<String> RequestToRuss() throws IOException, InterruptedException {
         Server server = ServerBuilder.forPort(9094).
