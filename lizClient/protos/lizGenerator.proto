@@ -1,0 +1,13 @@
+syntax = "proto3";
+package liz;
+service Service {
+    rpc Phrase(Request) returns (Response);
+}
+
+message Request {
+
+}
+
+message Response {
+    string phrase = 1;
+}
