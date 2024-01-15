@@ -15,10 +15,14 @@ public class Controller {
 
     ServiceLizards serviceLizards;
 
-    @RequestMapping(value="test", method = RequestMethod.GET)
-    public void test() {
+    @RequestMapping(value="/tester")
+    public String test() {
         System.out.println("Hi!");
+        return "index";
     }
+
+    @RequestMapping(value="/")
+    public String index() { return "index"; };
     
     @RequestMapping(value = "/RequestToRuss", method = RequestMethod.GET)
     public ResponseEntity<String> RequestToRuss() throws IOException, InterruptedException {
