@@ -37,31 +37,13 @@ messsageLiz(dataLiz);
 
 messsageRus(dataRus);
 
-const urlRus = "/sendRuss";
-const urlLiz = "/sendLizs";
+const urlRus = "/send";
 
 fetch(urlRus).then(response => {
-if(!response.ok){throw new Error('Network response was not ok');}
-return console.log(response)
-}
-)
-.then(data =>{
-messsageRus(data)
-})
-.catch(error => {
-//     // Обрабатываем ошибки
-console.error('There has been a problem with your fetch operation:', error);
-});
-
-fetch(urlLiz)
-.then(response => {
-if(!response.ok){throw new Error('Network response was not ok');}
-return console.log(response)
-}
-)
-.then(data =>{
-messsageLiz(data)
-}).catch(error => {
-//     // Обрабатываем ошибки
-console.error('There has been a problem with your fetch operation:', error);
-});
+		if(!response.ok){throw new Error('Network response was not ok');}
+		response.text().then(response => {document.getElementById("message-text").innerText = response
+			let text = document.getElementById("message-text").innerText;
+		if(text.substring(text.length - 1, text.length) === "0"){
+			messsageLiz(text.substring(0, text.length - 1));
+		} else messsageRus(text.substring(0, text.length - 1));
+		})})

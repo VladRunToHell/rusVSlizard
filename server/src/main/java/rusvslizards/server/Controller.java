@@ -10,7 +10,6 @@ import java.io.IOException;
 
 @org.springframework.stereotype.Controller
 public class Controller {
-
     String Phrase;
     String flag;
 
@@ -29,20 +28,13 @@ public class Controller {
         System.out.println(response.getPhrase());
         this.Phrase = response.getPhrase();
         this.flag =  "1";
-        return "redirect:/ochko";
+        return "redirect:/send";
     }
 
-    @RequestMapping("/sendRuss")
-    public ResponseEntity<String> sendRuss() {
-        System.out.println("test");
-
-        return ResponseEntity.ok(this.Phrase + this.flag);
-    }
-
-    @RequestMapping("/sendLizs")
+    @RequestMapping("/send")
     public ResponseEntity<String> sendLizs() {
         System.out.println("test");
-        return ResponseEntity.ok(this.Phrase + this.flag);
+        return ResponseEntity.ok(this.Phrase + "," + this.flag);
     }
 
     @RequestMapping(value = "/RequestToLizards", method = RequestMethod.GET)
@@ -55,6 +47,6 @@ public class Controller {
         System.out.println(response.getPhrase());
         this.Phrase = response.getPhrase();
         this.flag = "0";
-        return "redirect:/ochko";
+        return "redirect:/send";
     }
 }
